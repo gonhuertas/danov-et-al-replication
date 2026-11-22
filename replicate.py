@@ -65,7 +65,7 @@ def model_record(fit, asof, factor_count, caught, tolerance):
 
 
 def annual_growth(result, levels, asof, year):
-    known = levels.loc[levels.index.to_timestamp(how="end").normalize() + pd.Timedelta(days=99) <= asof]
+    known = levels.loc[levels.index.to_timestamp(how="end").normalize() + pd.Timedelta(days=SERIES["gdp"]["lag"]) <= asof]
     estimates = {quarter: float(value) for quarter, value in known.items()}
     first = min(estimates) if estimates else None
     if first is None:
