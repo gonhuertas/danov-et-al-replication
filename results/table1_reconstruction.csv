@@ -1,0 +1,12 @@
+series,name,paper_correlation,reconstructed_correlation,pvalue,n_quarters,common_variance_ratio
+remittances,Diaspora remittances,-0.02,0.08206220753,0.5834397725,47,0.2130791689
+mobile_money,Total agent cash in cash out,0.02,0.3198729219,0.02839167463,47,0.4768832906
+exports,Exports of goods,0.19,0.08241031457,0.5818384254,47,0.2488071968
+imports,Imports of goods,0.36,0.5759392539,2.276687519e-05,47,0.3546600503
+coffee,Coffee exports,-0.02,-0.1526491653,0.3056706215,47,0.1501602523
+tea,Tea exports,-0.18,-0.2606073988,0.07685417065,47,0.1705443119
+m2,Money supply M2,0.11,0.2337257702,0.113835933,47,0.4195175866
+electricity,Electricity production,0.3,0.5026136629,0.0003714126569,46,0.3409197593
+arrivals,Visitor arrivals,0.38,0.4111286154,0.004094411071,47,0.3323542436
+vehicles,Vehicle production,0.35,0.3265798054,0.02506147491,47,0.1202664081
+gdp,Real GDP,1,1,0,47,0.2760342817

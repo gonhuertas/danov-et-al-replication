@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-11-22T23:08:14.779506+00:00",
+  "factors": [
+    1,
+    2,
+    3
+  ],
+  "maxiter": 500,
+  "tolerance": 1e-05,
+  "news": true,
+  "start": "2021-09-21",
+  "end": "2025-12-21",
+  "raw_observations": 2089,
+  "included_series": [
+    "remittances",
+    "mobile_money",
+    "exports",
+    "imports",
+    "coffee",
+    "tea",
+    "m2",
+    "electricity",
+    "arrivals",
+    "vehicles",
+    "gdp"
+  ],
+  "omitted_series": [
+    "pmi"
+  ],
+  "forecast_dates": 103,
+  "quarterly_forecast_rows": 618,
+  "converged_fits": 54,
+  "total_fits": 54,
+  "maximum_news_reconciliation_error": 1.4432899320127035e-15,
+  "evaluation_quarters": 16,
+  "data_vintage": "Latest public data, truncated to Table 1 endpoints; not historical revisions."
+}

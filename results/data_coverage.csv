@@ -1,0 +1,13 @@
+series,status,reason,raw_start,raw_end,n_raw,nonpositive_levels,n_transformed,first_transformed,last_transformed
+pmi,omitted,No usable public history acquired,,,,,,,
+remittances,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+mobile_money,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+exports,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+imports,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+coffee,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+tea,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+m2,included,,2009-01,2025-09,201,0,189,2010-01,2025-09
+electricity,included,,2009-01,2025-11,200,0,188,2010-01,2025-11
+arrivals,included,,2009-01,2025-09,200,0,188,2010-01,2025-09
+vehicles,included,,2009-01,2025-11,203,0,191,2010-01,2025-11
+gdp,included,,2009Q1,2025Q3,67,0,63,2010-03,2025-09

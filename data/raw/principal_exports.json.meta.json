@@ -1,0 +1,12 @@
+{
+  "url": "https://www.centralbank.go.ke/wp-admin/admin-ajax.php?action=get_wdtable&table_id=27",
+  "method": "POST (read-only table query)",
+  "post_data": {
+    "draw": 1,
+    "start": 0,
+    "length": -1
+  },
+  "retrieved_utc": "2026-11-22T22:55:44.846856+00:00",
+  "sha256": "a9d8eeee4ce372dbe5622b6f9c88d39059991117f05f4d1104b55c9b914e5cd4",
+  "bytes": 38855
+}

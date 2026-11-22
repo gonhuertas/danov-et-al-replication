@@ -1,0 +1,410 @@
+{
+  "sources": [
+    {
+      "url": "https://www.centralbank.go.ke/foreign-trade-summary/",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:35.635726+00:00",
+      "sha256": "b2c724427c749558789409ff86500686a6ea58b94d6acd4ff3f7608e83c370dc",
+      "bytes": 195560,
+      "local_file": "foreign_trade.html"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2025/12/Kenya-Quarterly-Gross-Domestic-Product-Third-Quarter-2025.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:42.692499+00:00",
+      "sha256": "2e0e9e6f6a0bf387f03b741d109d6109965ea114690179d17603b6a37090a891",
+      "bytes": 2763459,
+      "local_file": "gdp_2025q3.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2021/09/Revision-and-Rebasing-of-National-Accounts-Report.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:40.032189+00:00",
+      "sha256": "734d1b25277abc8728570887d9dfd35e050643d7f1064f9063f1310a92ed6c2b",
+      "bytes": 696872,
+      "local_file": "gdp_rebased_2021.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2009.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:51.729514+00:00",
+      "sha256": "913df10ca27d5f0b8813d443c6bac03225b6230895a3ddd920492337d331a05a",
+      "bytes": 458413,
+      "local_file": "lei_2009.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2010.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:52.876900+00:00",
+      "sha256": "a22929f082e9ace601e726d41f64b50d7d5855a62ac209fd343b548c18f78ac5",
+      "bytes": 1037381,
+      "local_file": "lei_2010.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2011.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:54.013275+00:00",
+      "sha256": "6c4683ff7117fe3207e10b9f2ea2076b8f3a9abb9d2eeede9702a91028ffed1e",
+      "bytes": 951929,
+      "local_file": "lei_2011.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2012.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:55.000179+00:00",
+      "sha256": "ddfe94dda87efb1be65b92646634dfbe6b9d18052f0a145f92f6ccfd5f03b575",
+      "bytes": 1045820,
+      "local_file": "lei_2012.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2013.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:56.038726+00:00",
+      "sha256": "5fd71bcfe2b8ad2413ec065bca2f393db20260f81ec0561e53cb2063e2c6bd08",
+      "bytes": 904722,
+      "local_file": "lei_2013.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2014.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:56.935030+00:00",
+      "sha256": "2995520c024153041f40e79e5237aef32c3ce41a22f0cb32142cfdd4d7f5f3da",
+      "bytes": 798007,
+      "local_file": "lei_2014.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2015.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:57.938332+00:00",
+      "sha256": "27e074bc2f30bcc4550edfac2a42a996762da5f4cb220d5a30b1207154932730",
+      "bytes": 874487,
+      "local_file": "lei_2015.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2016.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:58.974458+00:00",
+      "sha256": "ce42f9cfed5092961e057bf200c86910e831469a889789bf543912d8893ed2f1",
+      "bytes": 706655,
+      "local_file": "lei_2016.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2017.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:56:00.013151+00:00",
+      "sha256": "9f8f3ea52d8d46e8916f271bd681beb66eb25fe1c68f777c0a378b5b87f6b199",
+      "bytes": 1166503,
+      "local_file": "lei_2017.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2018.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:56:01.034724+00:00",
+      "sha256": "e0a773af3bced4355e2f30a8616ab728c4b9329fe3cc58d7c4a95549906f4091",
+      "bytes": 1202844,
+      "local_file": "lei_2018.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2019.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:56:02.124624+00:00",
+      "sha256": "adfb734bc5e6813c89aa1d75431a7bc032162a8126d0f68105f74f30cb91ec72",
+      "bytes": 797997,
+      "local_file": "lei_2019.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2020.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:56:03.261029+00:00",
+      "sha256": "1c553a21d925b13930b39939706fce3ef06e31a145f582d8ade1414e12021a57",
+      "bytes": 912240,
+      "local_file": "lei_2020.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2021.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:56:04.618623+00:00",
+      "sha256": "44aeb5e12b5810b1c75670222dc01504cd1b9deab67f63f6d26d02239680863d",
+      "bytes": 936701,
+      "local_file": "lei_2021.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2022.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:56:05.595359+00:00",
+      "sha256": "91263cb99e5468d2f37d095ecdd53ebe5e991d6178e9d9b53c478fff68be829f",
+      "bytes": 929758,
+      "local_file": "lei_2022.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2024/03/Kenya-Leading-Economic-Indicators-December-2023.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:50.996158+00:00",
+      "sha256": "1731bf158e73b2776aa8e3199f02adf955a2c80e2c36aa60b488435b85a2dd90",
+      "bytes": 890881,
+      "local_file": "lei_2023.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2025/02/Kenya-Leading-Economic-Indicators-December-2024.pdf.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:49.417395+00:00",
+      "sha256": "f62e7a393539825caa6d968c4762aeb51165fdb3aa2a9e164b79ec70381a76eb",
+      "bytes": 1382612,
+      "local_file": "lei_2024.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-content/uploads/2026/02/Kenya-Leading-Economic-Indicators-December-2025.pdf",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:47.054304+00:00",
+      "sha256": "f91b29bb887a23091dffd9d77543d02d050448da1021a64e4302383d84714dc7",
+      "bytes": 1870585,
+      "local_file": "lei_2025.pdf"
+    },
+    {
+      "url": "https://www.knbs.or.ke/wp-json/wp/v2/media?search=Leading%20Economic%20Indicators%20December&per_page=100",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:43.513322+00:00",
+      "sha256": "5bb30521bc7ff11f8f5d1b2727f1cd387db57708db18b849fc2a56bf17bcdbf2",
+      "bytes": 85762,
+      "local_file": "lei_archive.json"
+    },
+    {
+      "url": "https://www.centralbank.go.ke/uploads/monetary_and_finance_statistics/377062609_Depository%20Corporation%20Survey%20-%20CSV.csv",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:36.560888+00:00",
+      "sha256": "28573f906e7052d00d77e84dbb6f31aa9ccaaa7918021062d61c7ceb478df27c",
+      "bytes": 101791,
+      "local_file": "m2.csv"
+    },
+    {
+      "url": "https://www.centralbank.go.ke/national-payments-system/mobile-payments/",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:35.436339+00:00",
+      "sha256": "b0c0fe0aa536e959b85393de438c0ad78670ec903ac54078ab7f7e683cec5cbd",
+      "bytes": 125433,
+      "local_file": "mobile_payments.html"
+    },
+    {
+      "url": "https://www.centralbank.go.ke/wp-admin/admin-ajax.php?action=get_wdtable&table_id=27",
+      "method": "POST (read-only table query)",
+      "post_data": {
+        "draw": 1,
+        "start": 0,
+        "length": -1
+      },
+      "retrieved_utc": "2026-11-22T22:55:44.846856+00:00",
+      "sha256": "a9d8eeee4ce372dbe5622b6f9c88d39059991117f05f4d1104b55c9b914e5cd4",
+      "bytes": 38855,
+      "local_file": "principal_exports.json"
+    },
+    {
+      "url": "https://www.centralbank.go.ke/diaspora-remittances/",
+      "method": "GET",
+      "post_data": null,
+      "retrieved_utc": "2026-11-22T22:55:35.207992+00:00",
+      "sha256": "0f71dfe48d2af9ec8792d98534689342c0f6a7e59085cd976a252da45c1f1ad0",
+      "bytes": 139154,
+      "local_file": "remittances.html"
+    }
+  ],
+  "series": {
+    "pmi": {
+      "name": "Stanbic Bank Kenya PMI",
+      "frequency": "M",
+      "lag": 5,
+      "transform": "level",
+      "end": "2025-12",
+      "unit": "Index"
+    },
+    "remittances": {
+      "name": "Diaspora remittances",
+      "frequency": "M",
+      "lag": 11,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Million USD"
+    },
+    "mobile_money": {
+      "name": "Total agent cash in cash out",
+      "frequency": "M",
+      "lag": 17,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Billion KES"
+    },
+    "exports": {
+      "name": "Exports of goods",
+      "frequency": "M",
+      "lag": 41,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Million KES"
+    },
+    "imports": {
+      "name": "Imports of goods",
+      "frequency": "M",
+      "lag": 41,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Million KES"
+    },
+    "coffee": {
+      "name": "Coffee exports",
+      "frequency": "M",
+      "lag": 41,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Tonnes"
+    },
+    "tea": {
+      "name": "Tea exports",
+      "frequency": "M",
+      "lag": 41,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Tonnes"
+    },
+    "m2": {
+      "name": "Money supply M2",
+      "frequency": "M",
+      "lag": 45,
+      "transform": "log12",
+      "end": "2025-09",
+      "unit": "Million KES"
+    },
+    "electricity": {
+      "name": "Electricity production",
+      "frequency": "M",
+      "lag": 48,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Million kWh"
+    },
+    "arrivals": {
+      "name": "Visitor arrivals",
+      "frequency": "M",
+      "lag": 48,
+      "transform": "level",
+      "end": "2025-09",
+      "unit": "Persons"
+    },
+    "vehicles": {
+      "name": "Vehicle production",
+      "frequency": "M",
+      "lag": 48,
+      "transform": "log12",
+      "end": "2025-11",
+      "unit": "Units"
+    },
+    "gdp": {
+      "name": "Real GDP",
+      "frequency": "Q",
+      "lag": 99,
+      "transform": "log4",
+      "end": "2025Q3",
+      "unit": "Million KES, constant prices"
+    }
+  },
+  "departures": [
+    "PMI omitted: no complete free official historical series verified; S&P historical data are subscription-based.",
+    "GDP splices the September 2021 rebasing report for 2009–2019 with December 2025 quarterly release for 2020–2025Q3. Both use constant 2016 prices, but this is mixed vintage.",
+    "Visitor arrivals use a consistent JKIA+MIA airport proxy, excluding other borders even when those are available.",
+    "Electricity uses domestic/local generation, excluding imports; the paper does not identify the precise column.",
+    "Monthly KNBS PDF data use the newest December edition containing each month; original revision vintages are unavailable.",
+    "March/April 2012 CBK trade gaps are repaired from KNBS December 2012 LEI, Table 12, PDF page 25.",
+    "All inputs are truncated to Table 1 endpoints; historical public files are saved unmodified.",
+    "Electricity July–September 2009 is left missing: the December 2009 table labels these rows as 2010. No date correction or interpolation is inferred.",
+    "Airport arrivals for October 2010 are absent from the acquired December editions and remain missing."
+  ],
+  "normalized_coverage": [
+    {
+      "series": "arrivals",
+      "first": "2009-01",
+      "last": "2025-09",
+      "n": 200
+    },
+    {
+      "series": "coffee",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    },
+    {
+      "series": "electricity",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 200
+    },
+    {
+      "series": "exports",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    },
+    {
+      "series": "gdp",
+      "first": "2009Q1",
+      "last": "2025Q3",
+      "n": 67
+    },
+    {
+      "series": "imports",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    },
+    {
+      "series": "m2",
+      "first": "2009-01",
+      "last": "2025-09",
+      "n": 201
+    },
+    {
+      "series": "mobile_money",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    },
+    {
+      "series": "remittances",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    },
+    {
+      "series": "tea",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    },
+    {
+      "series": "vehicles",
+      "first": "2009-01",
+      "last": "2025-11",
+      "n": 203
+    }
+  ]
+}

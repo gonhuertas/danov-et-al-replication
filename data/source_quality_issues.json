@@ -1,0 +1,23 @@
+[
+  {
+    "file": "lei_2009.pdf",
+    "page": 30,
+    "series": "electricity",
+    "row": "Jul-10 186.69 107.16 160.76 454.60",
+    "action": "Excluded date outside edition year; no inferred correction."
+  },
+  {
+    "file": "lei_2009.pdf",
+    "page": 30,
+    "series": "electricity",
+    "row": "Aug-10 138.29 112.53 177.62 428.45",
+    "action": "Excluded date outside edition year; no inferred correction."
+  },
+  {
+    "file": "lei_2009.pdf",
+    "page": 30,
+    "series": "electricity",
+    "row": "Sep-10 115.34 199.32 113.46 428.12",
+    "action": "Excluded date outside edition year; no inferred correction."
+  }
+]

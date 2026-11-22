@@ -1,0 +1,12 @@
+test_annual_growth_uses_quarterly_level_weights_and_hides_unreleased_actuals (test_replication.DataChecks.test_annual_growth_uses_quarterly_level_weights_and_hides_unreleased_actuals) ... ok
+test_pdf_year_suffix_does_not_consume_small_arrivals_counts (test_replication.DataChecks.test_pdf_year_suffix_does_not_consume_small_arrivals_counts) ... ok
+test_release_boundary_and_future_mutation (test_replication.DataChecks.test_release_boundary_and_future_mutation) ... ok
+test_schedule_starts_at_paper_origin (test_replication.DataChecks.test_schedule_starts_at_paper_origin) ... ok
+test_transform_is_log_yoy_and_does_not_fill_gaps (test_replication.DataChecks.test_transform_is_log_yoy_and_does_not_fill_gaps) ... ok
+test_news_reconciles_with_forecast_update_and_cloning (test_replication.ModelChecks.test_news_reconciles_with_forecast_update_and_cloning) ... ok
+test_quarterly_design_sums_three_months_including_idiosyncratic (test_replication.ModelChecks.test_quarterly_design_sums_three_months_including_idiosyncratic) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.885s
+
+OK

@@ -1,0 +1,17 @@
+{
+  "validated_utc": "2026-11-22T23:10:55.821568+00:00",
+  "passed": true,
+  "behavior_tests": 7,
+  "checks": [
+    "All 7 focused behavior tests passed.",
+    "Input panel has 10 monthly indicators and 67 actual quarterly GDP levels; no duplicate periods or post-paper endpoints.",
+    "Every cached source document matches its acquisition checksum.",
+    "All 618 forecasts are finite, uniquely dated and properly bounded; all models score the same 16 completed quarters.",
+    "Release-level news sums to every fixed-parameter update, and news plus reestimation reconciles consecutive predictions.",
+    "All 54 fits converged with nondecreasing likelihood; saved scaling exactly matches each release-masked rolling training vintage.",
+    "Accuracy metrics recompute from the saved forecasts; all six published-point comparisons are present.",
+    "Annual predictions are finite, and unavailable full-year 2025 actual GDP is not fabricated.",
+    "Report and instructions have no broken local links; all seven SVG figures parse successfully."
+  ],
+  "maximum_saved_news_discrepancy_pp": 5.991700469110128e-10
+}

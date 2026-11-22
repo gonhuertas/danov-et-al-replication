@@ -1,0 +1,8 @@
+{
+  "url": "https://www.knbs.or.ke/wp-json/wp/v2/media?search=Leading%20Economic%20Indicators%20December&per_page=100",
+  "method": "GET",
+  "post_data": null,
+  "retrieved_utc": "2026-11-22T22:55:43.513322+00:00",
+  "sha256": "5bb30521bc7ff11f8f5d1b2727f1cd387db57708db18b849fc2a56bf17bcdbf2",
+  "bytes": 85762
+}

@@ -1,0 +1,1204 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Danov et al. · Public-data reconstruction</title><style>
+body{margin:0;background:#f3f6f8;color:#213442;font:16px/1.6 system-ui,Segoe UI,sans-serif}main{max-width:1160px;margin:auto;padding:42px 24px}h1{font-size:36px;line-height:1.15;margin-bottom:12px}h2{font-size:23px}a{color:#126c8e}section,.card{background:white;padding:24px 28px;margin:24px 0;border:1px solid #dce4e8;border-radius:12px}.badge{color:#915200;background:#fff1cf;display:inline-block;padding:5px 12px;border-radius:6px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.grid .card{margin:0}.number{font-size:23px;font-weight:700;color:#146982}img{width:100%;height:auto}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:9px;text-align:left;border-bottom:1px solid #e0e7eb;white-space:nowrap}th{background:#eff4f6}code,pre{background:#eef3f6;padding:3px 6px}pre{overflow:auto;padding:16px;font-size:13px}small{color:#526975}li{margin-bottom:8px}details{margin:16px 0}footer{font-size:13px;color:#627683}</style></head><body><main>
+<div class="badge">PUBLIC-DATA RECONSTRUCTION · NOT AN EXACT REPLICATION</div>
+<h1>Nowcasting GDP Growth for Kenya</h1><p>Reconstruction of Danov, Giannone, Kabundi, Okou &amp; Spilimbergo · IMF Working Paper 26/32 (2026)</p>
+<p><a href="Danov_et_al_2026_Nowcasting_GDP_Growth_for_Kenya.pdf">Original paper (68 pages)</a> · <a href="README.html">Run instructions &amp; methodological notes</a> · Generated 2026-11-22</p>
+<div class="grid"><div class="card"><small>Public input series</small><div class="number">11 of 12</div><small>Omitted: pmi</small></div>
+<div class="card"><small>Forecast exercise</small><div class="number">103 dates</div><small>September 2021–December 2025 · factor counts: 1, 2, 3</small></div>
+<div class="card"><small>Latest 2025 Q4 nowcast</small><div class="number">4.10% log y/y on 2025-12-21</div><small>Reconstructed input vintage; not the authors’ estimate</small></div></div>
+<section><h2>How to interpret these results</h2><p>This is an executed reconstruction using real public observations. No unavailable indicator has been replaced with synthetic data, annual GDP has not been interpolated into quarters, and the paper’s reported numerical results are not used to fit the model. Differences in data, revisions and measurement mean that this is a test of a reconstructed method, not confirmation of the paper’s exact figures.</p>
+<ul><li>Year-on-year transformations: 100 log differences, with quarterly GDP on quarter-end months. PMI and visitor arrivals remain in levels. Nonpositive levels are treated as missing.</li><li>One, two and three joint VAR(1) factors, individual AR(1) components, EM estimation, and Kalman filtering/smoothing. GDP uses the paper’s [1,1,1] aggregation; the standard quarter-on-quarter [1,2,3,2,1] rule is not substituted.</li><li>Only lag-eligible observations enter each vintage. Parameters and standardization are fitted initially and at quarter starts using up to twelve years, then frozen within that quarter.</li><li>All forecast dates are pseudo-real-time, including April 2024 onward. Historical revisions and the Haver release calendar are unavailable. Fixed Table 1 end-of-period day lags replace exact release dates.</li><li>Conditional intervals exclude parameter uncertainty, vintage revisions and structural breaks. Full-vintage smoothed components are descriptive and never used as forecast inputs.</li><li>The evaluation contains 16 quarters over 2021Q4–2025Q3. The paper calls this span “15 quarters,” but the inclusive calendar span is 16; actual counts are reported rather than silently dropping a quarter.</li><li>CBK and WEO forecast-vintage comparisons are not reconstructed without their original dated forecast series. Statistical baselines are clearly labeled alternatives.</li></ul></section>
+<section><h2>Principal finding</h2><p>The reconstructed DFM2 nowcast RMSE is 1.383 p.p., versus 0.834 for AR(1); its backcast RMSE is 1.160, versus 0.629 for AR(1). Lower RMSE is better. These public-data results do not reproduce the paper’s favorable comparative performance; they do not establish that the published results are incorrect because the source data and vintages differ.</p><p>The requested factor counts were retained as planned; none was selected after seeing the evaluation errors. The saved CSV includes each model’s results.</p></section>
+<section><h2>Forecast accuracy · reconstructed DFM2</h2><p>Percentage points of 100 × log year-on-year GDP growth. Every model is evaluated on the same dated targets. Errors use the acquired latest GDP vintage, not first releases. Nowcasts and backcasts each combine six update rounds per completed target quarter.</p><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>type</th>
+      <th>model</th>
+      <th>n</th>
+      <th>quarters</th>
+      <th>rmse</th>
+      <th>mae</th>
+      <th>bias</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>backcast</td>
+      <td>DFM2</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.160</td>
+      <td>0.967</td>
+      <td>-0.414</td>
+    </tr>
+    <tr>
+      <td>backcast</td>
+      <td>Last released GDP</td>
+      <td>96</td>
+      <td>16</td>
+      <td>0.972</td>
+      <td>0.672</td>
+      <td>0.287</td>
+    </tr>
+    <tr>
+      <td>backcast</td>
+      <td>Historical mean</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.090</td>
+      <td>0.669</td>
+      <td>-0.446</td>
+    </tr>
+    <tr>
+      <td>backcast</td>
+      <td>AR(1)</td>
+      <td>96</td>
+      <td>16</td>
+      <td>0.629</td>
+      <td>0.527</td>
+      <td>-0.058</td>
+    </tr>
+    <tr>
+      <td>nowcast</td>
+      <td>DFM2</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.383</td>
+      <td>1.202</td>
+      <td>-0.772</td>
+    </tr>
+    <tr>
+      <td>nowcast</td>
+      <td>Last released GDP</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.535</td>
+      <td>1.164</td>
+      <td>0.596</td>
+    </tr>
+    <tr>
+      <td>nowcast</td>
+      <td>Historical mean</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.117</td>
+      <td>0.683</td>
+      <td>-0.460</td>
+    </tr>
+    <tr>
+      <td>nowcast</td>
+      <td>AR(1)</td>
+      <td>96</td>
+      <td>16</td>
+      <td>0.834</td>
+      <td>0.691</td>
+      <td>-0.147</td>
+    </tr>
+  </tbody>
+</table></div><p>Do not interpret deviations from the authors’ estimates as implementation error alone, or favorable benchmark results as an exact replication.</p></section>
+<section><h2>Factor-count robustness</h2><p>Lowest reconstructed RMSE among the requested DFM variants: backcast: DFM1; nowcast: DFM1. This is a reported sensitivity result, not an ex-post change to the main specification.</p><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model</th>
+      <th>type</th>
+      <th>n</th>
+      <th>quarters</th>
+      <th>rmse</th>
+      <th>mae</th>
+      <th>bias</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DFM1</td>
+      <td>backcast</td>
+      <td>96</td>
+      <td>16</td>
+      <td>0.863</td>
+      <td>0.666</td>
+      <td>-0.331</td>
+    </tr>
+    <tr>
+      <td>DFM1</td>
+      <td>nowcast</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.020</td>
+      <td>0.806</td>
+      <td>-0.460</td>
+    </tr>
+    <tr>
+      <td>DFM2</td>
+      <td>backcast</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.160</td>
+      <td>0.967</td>
+      <td>-0.414</td>
+    </tr>
+    <tr>
+      <td>DFM2</td>
+      <td>nowcast</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.383</td>
+      <td>1.202</td>
+      <td>-0.772</td>
+    </tr>
+    <tr>
+      <td>DFM3</td>
+      <td>backcast</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.110</td>
+      <td>0.942</td>
+      <td>-0.363</td>
+    </tr>
+    <tr>
+      <td>DFM3</td>
+      <td>nowcast</td>
+      <td>96</td>
+      <td>16</td>
+      <td>1.453</td>
+      <td>1.165</td>
+      <td>-0.842</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section><h2>1. Data coverage</h2><a href="results/figures/input_availability.svg"><img src="results/figures/input_availability.svg" alt="1. Data coverage"></a></section><section><h2>2. Common GDP components</h2><a href="results/figures/common_components.svg"><img src="results/figures/common_components.svg" alt="2. Common GDP components"></a></section><section><h2>3. Quarterly predictions</h2><a href="results/figures/quarterly_nowcasts.svg"><img src="results/figures/quarterly_nowcasts.svg" alt="3. Quarterly predictions"></a></section><section><h2>4. Forecast evaluation</h2><a href="results/figures/forecast_errors.svg"><img src="results/figures/forecast_errors.svg" alt="4. Forecast evaluation"></a></section><section><h2>5. News attribution</h2><a href="results/figures/news_impacts.svg"><img src="results/figures/news_impacts.svg" alt="5. News attribution"></a></section><section><h2>6. Calendar-year growth</h2><a href="results/figures/annual_nowcasts.svg"><img src="results/figures/annual_nowcasts.svg" alt="6. Calendar-year growth"></a></section><section><h2>7. Monthly inputs</h2><a href="results/figures/indicator_series.svg"><img src="results/figures/indicator_series.svg" alt="7. Monthly inputs"></a></section>
+<section><h2>Published point estimates versus this reconstruction</h2><p>Selected dated values explicitly described in Section 4.2 (PDF page 30). Differences are disclosed, not minimized by calibration. The paper’s percentage-growth descriptions and the implemented log-growth definition are not necessarily numerically identical.</p><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>asof</th>
+      <th>target</th>
+      <th>paper_prediction</th>
+      <th>reconstructed_prediction</th>
+      <th>difference_pp</th>
+      <th>paper_reference</th>
+      <th>interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2024-01-07</td>
+      <td>2024Q1</td>
+      <td>5.060</td>
+      <td>4.740</td>
+      <td>-0.320</td>
+      <td>Section 4.2, printed page 28 (PDF page 30)</td>
+      <td>Illustrative comparison, not a numerical pass/fail: source vintages and definitions differ.</td>
+    </tr>
+    <tr>
+      <td>2024-03-21</td>
+      <td>2024Q1</td>
+      <td>6.400</td>
+      <td>6.354</td>
+      <td>-0.046</td>
+      <td>Section 4.2, printed page 28 (PDF page 30)</td>
+      <td>Illustrative comparison, not a numerical pass/fail: source vintages and definitions differ.</td>
+    </tr>
+    <tr>
+      <td>2024-04-07</td>
+      <td>2024Q2</td>
+      <td>5.780</td>
+      <td>5.616</td>
+      <td>-0.164</td>
+      <td>Section 4.2, printed page 28 (PDF page 30)</td>
+      <td>Illustrative comparison, not a numerical pass/fail: source vintages and definitions differ.</td>
+    </tr>
+    <tr>
+      <td>2024-06-21</td>
+      <td>2024Q2</td>
+      <td>4.830</td>
+      <td>4.303</td>
+      <td>-0.527</td>
+      <td>Section 4.2, printed page 28 (PDF page 30)</td>
+      <td>Illustrative comparison, not a numerical pass/fail: source vintages and definitions differ.</td>
+    </tr>
+    <tr>
+      <td>2025-01-07</td>
+      <td>2025Q1</td>
+      <td>4.160</td>
+      <td>3.953</td>
+      <td>-0.207</td>
+      <td>Section 4.2, printed page 28 (PDF page 30)</td>
+      <td>Illustrative comparison, not a numerical pass/fail: source vintages and definitions differ.</td>
+    </tr>
+    <tr>
+      <td>2025-03-21</td>
+      <td>2025Q1</td>
+      <td>3.120</td>
+      <td>2.212</td>
+      <td>-0.908</td>
+      <td>Section 4.2, printed page 28 (PDF page 30)</td>
+      <td>Illustrative comparison, not a numerical pass/fail: source vintages and definitions differ.</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section><h2>Input coverage</h2><p>Arrivals use a JKIA+MIA airport-only proxy. Three July–September 2009 electricity observations are excluded because of inconsistent source date labels, and October 2010 airport arrivals are missing. No values are interpolated. The three electricity gaps also remove their 2010 year-on-year comparisons. <a href="data/source_quality_issues.json">Source-quality record</a>.</p><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>series</th>
+      <th>status</th>
+      <th>reason</th>
+      <th>raw_start</th>
+      <th>raw_end</th>
+      <th>n_raw</th>
+      <th>nonpositive_levels</th>
+      <th>n_transformed</th>
+      <th>first_transformed</th>
+      <th>last_transformed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pmi</td>
+      <td>omitted</td>
+      <td>No usable public history acquired</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>remittances</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>mobile_money</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>exports</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>imports</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>coffee</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>tea</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>m2</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-09</td>
+      <td>201.000</td>
+      <td>0.000</td>
+      <td>189.000</td>
+      <td>2010-01</td>
+      <td>2025-09</td>
+    </tr>
+    <tr>
+      <td>electricity</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>200.000</td>
+      <td>0.000</td>
+      <td>188.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>arrivals</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-09</td>
+      <td>200.000</td>
+      <td>0.000</td>
+      <td>188.000</td>
+      <td>2010-01</td>
+      <td>2025-09</td>
+    </tr>
+    <tr>
+      <td>vehicles</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009-01</td>
+      <td>2025-11</td>
+      <td>203.000</td>
+      <td>0.000</td>
+      <td>191.000</td>
+      <td>2010-01</td>
+      <td>2025-11</td>
+    </tr>
+    <tr>
+      <td>gdp</td>
+      <td>included</td>
+      <td>—</td>
+      <td>2009Q1</td>
+      <td>2025Q3</td>
+      <td>67.000</td>
+      <td>0.000</td>
+      <td>63.000</td>
+      <td>2010-03</td>
+      <td>2025-09</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section><h2>Estimation &amp; reconciliation</h2><p>Saved validation: 7 behavior tests passed, plus empirical timing, checksum, news and report-asset checks. <a href="results/validation.json">Validation details</a> · <a href="results/test_results.txt">Test log</a>.</p><p>54 of 54 quarterly EM fits reached the configured tolerance. Nonconverged fits, if any, remain flagged and are not represented as converged. Maximum absolute discrepancy between release-news contributions and the fixed-parameter prediction change: 1.44e-15 p.p.</p>
+<details><summary>Quarterly fit diagnostics</summary><div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>factors</th>
+      <th>fit_asof</th>
+      <th>iterations</th>
+      <th>loglikelihood</th>
+      <th>converged</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2021-09-21</td>
+      <td>37</td>
+      <td>-1,276.044</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2021-10-01</td>
+      <td>38</td>
+      <td>-1,276.024</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2022-01-01</td>
+      <td>41</td>
+      <td>-1,307.897</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2022-04-01</td>
+      <td>39</td>
+      <td>-1,300.451</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2022-07-01</td>
+      <td>39</td>
+      <td>-1,308.327</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2022-10-01</td>
+      <td>39</td>
+      <td>-1,301.634</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2023-01-01</td>
+      <td>38</td>
+      <td>-1,320.140</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2023-04-01</td>
+      <td>39</td>
+      <td>-1,364.230</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2023-07-01</td>
+      <td>38</td>
+      <td>-1,371.296</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2023-10-01</td>
+      <td>37</td>
+      <td>-1,415.308</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2024-01-01</td>
+      <td>36</td>
+      <td>-1,426.296</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2024-04-01</td>
+      <td>38</td>
+      <td>-1,424.789</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2024-07-01</td>
+      <td>38</td>
+      <td>-1,436.864</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2024-10-01</td>
+      <td>38</td>
+      <td>-1,442.539</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2025-01-01</td>
+      <td>37</td>
+      <td>-1,434.515</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2025-04-01</td>
+      <td>36</td>
+      <td>-1,406.941</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2025-07-01</td>
+      <td>36</td>
+      <td>-1,400.425</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2025-10-01</td>
+      <td>37</td>
+      <td>-1,400.758</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2021-09-21</td>
+      <td>63</td>
+      <td>-1,242.060</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2021-10-01</td>
+      <td>63</td>
+      <td>-1,241.915</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-01-01</td>
+      <td>58</td>
+      <td>-1,270.137</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-04-01</td>
+      <td>53</td>
+      <td>-1,257.012</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-07-01</td>
+      <td>49</td>
+      <td>-1,266.994</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2022-10-01</td>
+      <td>59</td>
+      <td>-1,267.185</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2023-01-01</td>
+      <td>64</td>
+      <td>-1,288.111</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2023-04-01</td>
+      <td>62</td>
+      <td>-1,336.014</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2023-07-01</td>
+      <td>62</td>
+      <td>-1,342.975</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2023-10-01</td>
+      <td>49</td>
+      <td>-1,363.447</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-01-01</td>
+      <td>50</td>
+      <td>-1,366.247</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-04-01</td>
+      <td>47</td>
+      <td>-1,368.578</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-07-01</td>
+      <td>55</td>
+      <td>-1,376.423</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-10-01</td>
+      <td>46</td>
+      <td>-1,385.245</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2025-01-01</td>
+      <td>46</td>
+      <td>-1,383.108</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2025-04-01</td>
+      <td>46</td>
+      <td>-1,367.506</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2025-07-01</td>
+      <td>43</td>
+      <td>-1,365.491</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2025-10-01</td>
+      <td>43</td>
+      <td>-1,364.754</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2021-09-21</td>
+      <td>101</td>
+      <td>-1,224.337</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2021-10-01</td>
+      <td>82</td>
+      <td>-1,225.195</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2022-01-01</td>
+      <td>86</td>
+      <td>-1,251.682</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2022-04-01</td>
+      <td>76</td>
+      <td>-1,238.597</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2022-07-01</td>
+      <td>136</td>
+      <td>-1,255.369</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2022-10-01</td>
+      <td>104</td>
+      <td>-1,257.795</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2023-01-01</td>
+      <td>75</td>
+      <td>-1,275.785</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2023-04-01</td>
+      <td>60</td>
+      <td>-1,323.563</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2023-07-01</td>
+      <td>57</td>
+      <td>-1,331.658</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2023-10-01</td>
+      <td>55</td>
+      <td>-1,352.937</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-01-01</td>
+      <td>59</td>
+      <td>-1,356.340</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-04-01</td>
+      <td>57</td>
+      <td>-1,357.785</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-07-01</td>
+      <td>88</td>
+      <td>-1,366.227</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-10-01</td>
+      <td>54</td>
+      <td>-1,371.667</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2025-01-01</td>
+      <td>55</td>
+      <td>-1,362.939</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2025-04-01</td>
+      <td>59</td>
+      <td>-1,338.930</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2025-07-01</td>
+      <td>56</td>
+      <td>-1,336.119</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2025-10-01</td>
+      <td>73</td>
+      <td>-1,336.794</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table></div></details></section>
+<section><h2>Downloads &amp; provenance</h2><ul><li><a href="results/quarterly_forecasts.csv">Every quarterly forecast and decomposition</a></li><li><a href="results/annual_forecasts.csv">Every calendar-year forecast</a></li><li><a href="results/news_details.csv">Release-level surprises, weights and impacts</a></li><li><a href="results/summary_metrics.csv">Summary accuracy measures</a> · <a href="results/forecast_metrics.csv">Metrics by update round</a></li><li><a href="results/table1_reconstruction.csv">Table 1 descriptive comparisons</a></li><li><a href="results/data_coverage.csv">Data coverage</a> · <a href="results/transformed_panel.csv">Transformed panel</a> · <a href="data/observations.csv">Normalized raw observations</a></li><li><a href="data/sources.json">Source metadata and acquisition dates</a> · <a href="file_inventory.json">File checksums</a></li><li><a href="results/estimation_diagnostics.csv">Estimation diagnostics</a> · <a href="results/run_configuration.json">Run configuration</a> · <a href="results/environment.json">Software versions</a></li></ul>
+<details><summary>Source metadata</summary><pre>{
+  &quot;sources&quot;: [
+    {
+      &quot;url&quot;: &quot;https://www.centralbank.go.ke/foreign-trade-summary/&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:35.635726+00:00&quot;,
+      &quot;sha256&quot;: &quot;b2c724427c749558789409ff86500686a6ea58b94d6acd4ff3f7608e83c370dc&quot;,
+      &quot;bytes&quot;: 195560,
+      &quot;local_file&quot;: &quot;foreign_trade.html&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2025/12/Kenya-Quarterly-Gross-Domestic-Product-Third-Quarter-2025.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:42.692499+00:00&quot;,
+      &quot;sha256&quot;: &quot;2e0e9e6f6a0bf387f03b741d109d6109965ea114690179d17603b6a37090a891&quot;,
+      &quot;bytes&quot;: 2763459,
+      &quot;local_file&quot;: &quot;gdp_2025q3.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2021/09/Revision-and-Rebasing-of-National-Accounts-Report.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:40.032189+00:00&quot;,
+      &quot;sha256&quot;: &quot;734d1b25277abc8728570887d9dfd35e050643d7f1064f9063f1310a92ed6c2b&quot;,
+      &quot;bytes&quot;: 696872,
+      &quot;local_file&quot;: &quot;gdp_rebased_2021.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2009.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:51.729514+00:00&quot;,
+      &quot;sha256&quot;: &quot;913df10ca27d5f0b8813d443c6bac03225b6230895a3ddd920492337d331a05a&quot;,
+      &quot;bytes&quot;: 458413,
+      &quot;local_file&quot;: &quot;lei_2009.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2010.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:52.876900+00:00&quot;,
+      &quot;sha256&quot;: &quot;a22929f082e9ace601e726d41f64b50d7d5855a62ac209fd343b548c18f78ac5&quot;,
+      &quot;bytes&quot;: 1037381,
+      &quot;local_file&quot;: &quot;lei_2010.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2011.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:54.013275+00:00&quot;,
+      &quot;sha256&quot;: &quot;6c4683ff7117fe3207e10b9f2ea2076b8f3a9abb9d2eeede9702a91028ffed1e&quot;,
+      &quot;bytes&quot;: 951929,
+      &quot;local_file&quot;: &quot;lei_2011.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2012.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:55.000179+00:00&quot;,
+      &quot;sha256&quot;: &quot;ddfe94dda87efb1be65b92646634dfbe6b9d18052f0a145f92f6ccfd5f03b575&quot;,
+      &quot;bytes&quot;: 1045820,
+      &quot;local_file&quot;: &quot;lei_2012.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2013.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:56.038726+00:00&quot;,
+      &quot;sha256&quot;: &quot;5fd71bcfe2b8ad2413ec065bca2f393db20260f81ec0561e53cb2063e2c6bd08&quot;,
+      &quot;bytes&quot;: 904722,
+      &quot;local_file&quot;: &quot;lei_2013.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2014.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:56.935030+00:00&quot;,
+      &quot;sha256&quot;: &quot;2995520c024153041f40e79e5237aef32c3ce41a22f0cb32142cfdd4d7f5f3da&quot;,
+      &quot;bytes&quot;: 798007,
+      &quot;local_file&quot;: &quot;lei_2014.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2015.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:57.938332+00:00&quot;,
+      &quot;sha256&quot;: &quot;27e074bc2f30bcc4550edfac2a42a996762da5f4cb220d5a30b1207154932730&quot;,
+      &quot;bytes&quot;: 874487,
+      &quot;local_file&quot;: &quot;lei_2015.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2016.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:58.974458+00:00&quot;,
+      &quot;sha256&quot;: &quot;ce42f9cfed5092961e057bf200c86910e831469a889789bf543912d8893ed2f1&quot;,
+      &quot;bytes&quot;: 706655,
+      &quot;local_file&quot;: &quot;lei_2016.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/08/Kenya-Leading-Economic-Indicators-December-2017.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:56:00.013151+00:00&quot;,
+      &quot;sha256&quot;: &quot;9f8f3ea52d8d46e8916f271bd681beb66eb25fe1c68f777c0a378b5b87f6b199&quot;,
+      &quot;bytes&quot;: 1166503,
+      &quot;local_file&quot;: &quot;lei_2017.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2018.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:56:01.034724+00:00&quot;,
+      &quot;sha256&quot;: &quot;e0a773af3bced4355e2f30a8616ab728c4b9329fe3cc58d7c4a95549906f4091&quot;,
+      &quot;bytes&quot;: 1202844,
+      &quot;local_file&quot;: &quot;lei_2018.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2019.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:56:02.124624+00:00&quot;,
+      &quot;sha256&quot;: &quot;adfb734bc5e6813c89aa1d75431a7bc032162a8126d0f68105f74f30cb91ec72&quot;,
+      &quot;bytes&quot;: 797997,
+      &quot;local_file&quot;: &quot;lei_2019.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2020.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:56:03.261029+00:00&quot;,
+      &quot;sha256&quot;: &quot;1c553a21d925b13930b39939706fce3ef06e31a145f582d8ade1414e12021a57&quot;,
+      &quot;bytes&quot;: 912240,
+      &quot;local_file&quot;: &quot;lei_2020.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2021.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:56:04.618623+00:00&quot;,
+      &quot;sha256&quot;: &quot;44aeb5e12b5810b1c75670222dc01504cd1b9deab67f63f6d26d02239680863d&quot;,
+      &quot;bytes&quot;: 936701,
+      &quot;local_file&quot;: &quot;lei_2021.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2023/07/Kenya-Leading-Economic-Indicators-December-2022.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:56:05.595359+00:00&quot;,
+      &quot;sha256&quot;: &quot;91263cb99e5468d2f37d095ecdd53ebe5e991d6178e9d9b53c478fff68be829f&quot;,
+      &quot;bytes&quot;: 929758,
+      &quot;local_file&quot;: &quot;lei_2022.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2024/03/Kenya-Leading-Economic-Indicators-December-2023.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:50.996158+00:00&quot;,
+      &quot;sha256&quot;: &quot;1731bf158e73b2776aa8e3199f02adf955a2c80e2c36aa60b488435b85a2dd90&quot;,
+      &quot;bytes&quot;: 890881,
+      &quot;local_file&quot;: &quot;lei_2023.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2025/02/Kenya-Leading-Economic-Indicators-December-2024.pdf.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:49.417395+00:00&quot;,
+      &quot;sha256&quot;: &quot;f62e7a393539825caa6d968c4762aeb51165fdb3aa2a9e164b79ec70381a76eb&quot;,
+      &quot;bytes&quot;: 1382612,
+      &quot;local_file&quot;: &quot;lei_2024.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-content/uploads/2026/02/Kenya-Leading-Economic-Indicators-December-2025.pdf&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:47.054304+00:00&quot;,
+      &quot;sha256&quot;: &quot;f91b29bb887a23091dffd9d77543d02d050448da1021a64e4302383d84714dc7&quot;,
+      &quot;bytes&quot;: 1870585,
+      &quot;local_file&quot;: &quot;lei_2025.pdf&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.knbs.or.ke/wp-json/wp/v2/media?search=Leading%20Economic%20Indicators%20December&amp;per_page=100&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:43.513322+00:00&quot;,
+      &quot;sha256&quot;: &quot;5bb30521bc7ff11f8f5d1b2727f1cd387db57708db18b849fc2a56bf17bcdbf2&quot;,
+      &quot;bytes&quot;: 85762,
+      &quot;local_file&quot;: &quot;lei_archive.json&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.centralbank.go.ke/uploads/monetary_and_finance_statistics/377062609_Depository%20Corporation%20Survey%20-%20CSV.csv&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:36.560888+00:00&quot;,
+      &quot;sha256&quot;: &quot;28573f906e7052d00d77e84dbb6f31aa9ccaaa7918021062d61c7ceb478df27c&quot;,
+      &quot;bytes&quot;: 101791,
+      &quot;local_file&quot;: &quot;m2.csv&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.centralbank.go.ke/national-payments-system/mobile-payments/&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:35.436339+00:00&quot;,
+      &quot;sha256&quot;: &quot;b0c0fe0aa536e959b85393de438c0ad78670ec903ac54078ab7f7e683cec5cbd&quot;,
+      &quot;bytes&quot;: 125433,
+      &quot;local_file&quot;: &quot;mobile_payments.html&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.centralbank.go.ke/wp-admin/admin-ajax.php?action=get_wdtable&amp;table_id=27&quot;,
+      &quot;method&quot;: &quot;POST (read-only table query)&quot;,
+      &quot;post_data&quot;: {
+        &quot;draw&quot;: 1,
+        &quot;start&quot;: 0,
+        &quot;length&quot;: -1
+      },
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:44.846856+00:00&quot;,
+      &quot;sha256&quot;: &quot;a9d8eeee4ce372dbe5622b6f9c88d39059991117f05f4d1104b55c9b914e5cd4&quot;,
+      &quot;bytes&quot;: 38855,
+      &quot;local_file&quot;: &quot;principal_exports.json&quot;
+    },
+    {
+      &quot;url&quot;: &quot;https://www.centralbank.go.ke/diaspora-remittances/&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;post_data&quot;: null,
+      &quot;retrieved_utc&quot;: &quot;2026-11-22T22:55:35.207992+00:00&quot;,
+      &quot;sha256&quot;: &quot;0f71dfe48d2af9ec8792d98534689342c0f6a7e59085cd976a252da45c1f1ad0&quot;,
+      &quot;bytes&quot;: 139154,
+      &quot;local_file&quot;: &quot;remittances.html&quot;
+    }
+  ],
+  &quot;series&quot;: {
+    &quot;pmi&quot;: {
+      &quot;name&quot;: &quot;Stanbic Bank Kenya PMI&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 5,
+      &quot;transform&quot;: &quot;level&quot;,
+      &quot;end&quot;: &quot;2025-12&quot;,
+      &quot;unit&quot;: &quot;Index&quot;
+    },
+    &quot;remittances&quot;: {
+      &quot;name&quot;: &quot;Diaspora remittances&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 11,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Million USD&quot;
+    },
+    &quot;mobile_money&quot;: {
+      &quot;name&quot;: &quot;Total agent cash in cash out&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 17,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Billion KES&quot;
+    },
+    &quot;exports&quot;: {
+      &quot;name&quot;: &quot;Exports of goods&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 41,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Million KES&quot;
+    },
+    &quot;imports&quot;: {
+      &quot;name&quot;: &quot;Imports of goods&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 41,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Million KES&quot;
+    },
+    &quot;coffee&quot;: {
+      &quot;name&quot;: &quot;Coffee exports&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 41,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Tonnes&quot;
+    },
+    &quot;tea&quot;: {
+      &quot;name&quot;: &quot;Tea exports&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 41,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Tonnes&quot;
+    },
+    &quot;m2&quot;: {
+      &quot;name&quot;: &quot;Money supply M2&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 45,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-09&quot;,
+      &quot;unit&quot;: &quot;Million KES&quot;
+    },
+    &quot;electricity&quot;: {
+      &quot;name&quot;: &quot;Electricity production&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 48,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Million kWh&quot;
+    },
+    &quot;arrivals&quot;: {
+      &quot;name&quot;: &quot;Visitor arrivals&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 48,
+      &quot;transform&quot;: &quot;level&quot;,
+      &quot;end&quot;: &quot;2025-09&quot;,
+      &quot;unit&quot;: &quot;Persons&quot;
+    },
+    &quot;vehicles&quot;: {
+      &quot;name&quot;: &quot;Vehicle production&quot;,
+      &quot;frequency&quot;: &quot;M&quot;,
+      &quot;lag&quot;: 48,
+      &quot;transform&quot;: &quot;log12&quot;,
+      &quot;end&quot;: &quot;2025-11&quot;,
+      &quot;unit&quot;: &quot;Units&quot;
+    },
+    &quot;gdp&quot;: {
+      &quot;name&quot;: &quot;Real GDP&quot;,
+      &quot;frequency&quot;: &quot;Q&quot;,
+      &quot;lag&quot;: 99,
+      &quot;transform&quot;: &quot;log4&quot;,
+      &quot;end&quot;: &quot;2025Q3&quot;,
+      &quot;unit&quot;: &quot;Million KES, constant prices&quot;
+    }
+  },
+  &quot;departures&quot;: [
+    &quot;PMI omitted: no complete free official historical series verified; S&amp;P historical data are subscription-based.&quot;,
+    &quot;GDP splices the September 2021 rebasing report for 2009–2019 with December 2025 quarterly release for 2020–2025Q3. Both use constant 2016 prices, but this is mixed vintage.&quot;,
+    &quot;Visitor arrivals use a consistent JKIA+MIA airport proxy, excluding other borders even when those are available.&quot;,
+    &quot;Electricity uses domestic/local generation, excluding imports; the paper does not identify the precise column.&quot;,
+    &quot;Monthly KNBS PDF data use the newest December edition containing each month; original revision vintages are unavailable.&quot;,
+    &quot;March/April 2012 CBK trade gaps are repaired from KNBS December 2012 LEI, Table 12, PDF page 25.&quot;,
+    &quot;All inputs are truncated to Table 1 endpoints; historical public files are saved unmodified.&quot;,
+    &quot;Electricity July–September 2009 is left missing: the December 2009 table labels these rows as 2010. No date correction or interpolation is inferred.&quot;,
+    &quot;Airport arrivals for October 2010 are absent from the acquired December editions and remain missing.&quot;
+  ],
+  &quot;normalized_coverage&quot;: [
+    {
+      &quot;series&quot;: &quot;arrivals&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-09&quot;,
+      &quot;n&quot;: 200
+    },
+    {
+      &quot;series&quot;: &quot;coffee&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    },
+    {
+      &quot;series&quot;: &quot;electricity&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 200
+    },
+    {
+      &quot;series&quot;: &quot;exports&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    },
+    {
+      &quot;series&quot;: &quot;gdp&quot;,
+      &quot;first&quot;: &quot;2009Q1&quot;,
+      &quot;last&quot;: &quot;2025Q3&quot;,
+      &quot;n&quot;: 67
+    },
+    {
+      &quot;series&quot;: &quot;imports&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    },
+    {
+      &quot;series&quot;: &quot;m2&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-09&quot;,
+      &quot;n&quot;: 201
+    },
+    {
+      &quot;series&quot;: &quot;mobile_money&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    },
+    {
+      &quot;series&quot;: &quot;remittances&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    },
+    {
+      &quot;series&quot;: &quot;tea&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    },
+    {
+      &quot;series&quot;: &quot;vehicles&quot;,
+      &quot;first&quot;: &quot;2009-01&quot;,
+      &quot;last&quot;: &quot;2025-11&quot;,
+      &quot;n&quot;: 203
+    }
+  ]
+}</pre></details></section>
+<footer>Source paper: https://www.imf.org/-/media/files/publications/wp/2026/english/wpiea2026032-source-pdf.pdf · DOI and bibliographic details are in the saved paper. This report contains independent analysis; no affiliation with the authors or IMF is implied.</footer></main></body></html>
